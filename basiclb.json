@@ -29,7 +29,8 @@
                 "name": "[parameters('lbsku')]"
             },
             "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('lbpublicIPAddressName')), resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('lbname'), 'test-vmss-backend')]"
+                "[concat('Microsoft.Network/publicIPAddresses/', parameters('lbpublicIPAddressName'))]", 
+                "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('lbname'), 'test-vmss-backend')]"
             ],
             "tags": {},
             "properties": {
