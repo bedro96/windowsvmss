@@ -2,14 +2,17 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "virtualMachineScaleSetRG": {
+            "value": "test-vmss-rg"
+        },
         "location": {
             "value": "koreacentral"
         },
+        "customImageId": {
+            "value": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/customimagerg/providers/Microsoft.Compute/images/baseimage00-image-20200609200139"
+        },
         "virtualMachineScaleSetName": {
             "value": "test-vmss"
-        },
-        "virtualMachineScaleSetRG": {
-            "value": "test-vmss-rg"
         },
         "singlePlacementGroup": {
             "value": "true"
@@ -30,7 +33,7 @@
             "value": "false"
         },
         "subnetId": {
-            "value": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/vmsscustomscale/providers/Microsoft.Network/virtualNetworks/vmss-vnet/subnets/default"
+            "value": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/virtualNetworks/test-vmss-vnet/subnets/default"
         },
         "osDiskType": {
             "value": "Premium_LRS"
@@ -51,16 +54,16 @@
             ]
         },
         "virtualNetworkId": {
-            "value": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/vmsscustomscale/providers/Microsoft.Network/virtualNetworks/vmss-vnet"
+            "value": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/virtualNetworks/test-vmss-vnet"
         },
         "virtualNetworkName": {
-            "value": "vmss-vnet"
+            "value": "test-vmss-vnet"
         },
         "networkSecurityGroups": {
             "value": [
                 {
-                    "name": "vmss-nsg",
-                    "id": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/vmsscustomscale/providers/Microsoft.Network/networkSecurityGroups/vmss-nsg",
+                    "name": "test-vmss-nsg",
+                    "id": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/networkSecurityGroups/test-vmss-nsg",
                     "rules": [
                         {
                             "name": "Port_80",
@@ -103,24 +106,21 @@
         "networkInterfaceConfigurations": {
             "value": [
                 {
-                    "name": "vmsscustomscale-vnet-nic01",
+                    "name": "test-vmss-vnet-nic01",
                     "primary": true,
-                    "subnetId": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/vmsscustomscale/providers/Microsoft.Network/virtualNetworks/vmss-vnet/subnets/default",
+                    "subnetId": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/virtualNetworks/test-vmss-vnet/subnets/default",
                     "applicationGatewayBackendAddressPools": [],
                     "loadBalancerBackendAddressPools": [],
                     "applicationSecurityGroups": [],
                     "enableAcceleratedNetworking": false,
-                    "nsgName": "vmss-nsg",
-                    "nsgId": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/vmsscustomscale/providers/Microsoft.Network/networkSecurityGroups/vmss-nsg",
+                    "nsgName": "test-vmss-nsg",
+                    "nsgId": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/networkSecurityGroups/test-vmss-nsg",
                     "pipName": ""
                 }
             ]
         },
-        "vmName": {
-            "value": "customscale"
-        },
         "diagnosticStorageAccount": {
-            "value": "vmsscustomscalediag"
+            "value": "testvmssdiag00"
         },
         "diagnosticsStorageAccountKind": {
             "value": "Storage"
@@ -138,7 +138,10 @@
             "value": "CitrixOnAzure1!"
         },
         "platformFaultDomainCount": {
-            "value": "2"
+            "value": "5"
+        },
+        "_artifactsLocation": {
+            "value": "https://artifactslocation00.blob.core.windows.net/scripts"
         }
     }
 }

@@ -53,9 +53,6 @@
         "networkInterfaceConfigurations": {
             "type": "array"
         },
-        "vmName": {
-            "type": "string"
-        },
         "diagnosticStorageAccount": {
             "type": "string"
         },
@@ -78,7 +75,7 @@
             "type": "string"
         },
         "_artifactsLocation": {
-            "defaultValue": "https://raw.githubusercontent.com/bedro96/windowsvmss/master",
+            "defaultValue": "https://artifactslocation00.blob.core.windows.net/scripts",
             "type": "string",
             "metadata": {
               "description": "The base URI where artifacts required by this template are located."
