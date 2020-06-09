@@ -6,16 +6,16 @@
             "value": "koreacentral"
         },
         "virtualMachineScaleSetName": {
-            "value": "customscale"
+            "value": "test-vmss"
         },
         "virtualMachineScaleSetRG": {
-            "value": "vmsscustomscale"
+            "value": "test-vmss-rg"
         },
         "singlePlacementGroup": {
-            "value": "false"
+            "value": "true"
         },
         "instanceSize": {
-            "value": "Standard_B2ms"
+            "value": "Standard_D8s_v3"
         },
         "instanceCount": {
             "value": "2"
