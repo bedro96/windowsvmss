@@ -1,0 +1,138 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "lbname": {
+            "type": "string"
+        },
+        "lblocation": {
+            "type": "string"
+        },
+        "lbsku": {
+            "type": "string"
+        },
+        "lbpublicIPAddressName": {
+            "type": "string"
+        },
+        "publicIPAddresses_test_vmss_lb_pip_externalid": {
+            "defaultValue": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/publicIPAddresses/test-vmss-lb-pip",
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-06-01",
+            "name": "[parameters('lbname')]",
+            "type": "Microsoft.Network/loadBalancers",
+            "location": "[parameters('lblocation')]",
+            "sku": {
+                "name": "[parameters('lbsku')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', parameters('lbpublicIPAddressName')), resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('lbname'), 'test-vmss-backend')]"
+            ],
+            "tags": {},
+            "properties": {
+                "frontendIPConfigurations": [
+                    {
+                        "name": "LoadBalancerFrontEnd",
+                        "properties": {
+                            "publicIPAddress": {
+                                "id": "[resourceId('test-vmss-rg', 'Microsoft.Network/publicIPAddresses', parameters('lbpublicIPAddressName'))]"
+                            },
+                            "privateIPAllocationMethod": "Dynamic",
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "test-vmss-backend",
+                        "properties": {}
+                    }
+                ],
+                "loadBalancingRules": [
+                    {
+                        "name": "tcp80-tcp80",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('lbname')), '/frontendIPConfigurations/LoadBalancerFrontEnd')]"
+                            },
+                            "frontendPort": 80,
+                            "backendPort": 80,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false,
+                            "loadDistribution": "SourceIP",
+                            "backendAddressPool": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('lbname'), 'test-vmss-backend')]"
+                            },
+                            "probe": {
+                                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('lbname')), '/probes/tcp-80-healthcheck')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "https443-https443",
+                        "properties": {
+                            "frontendIPConfiguration": {
+                                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('lbname')), '/frontendIPConfigurations/LoadBalancerFrontEnd')]"
+                            },
+                            "frontendPort": 443,
+                            "backendPort": 443,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false,
+                            "loadDistribution": "SourceIP",
+                            "backendAddressPool": {
+                                "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('lbname'), 'test-vmss-backend')]"
+                            },
+                            "probe": {
+                                "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('lbname')), '/probes/tcp-80-healthcheck')]"
+                            }
+                        }
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "tcp-80-healthcheck",
+                        "properties": {
+                            "protocol": "Tcp",
+                            "port": 80,
+                            "intervalInSeconds": 5,
+                            "numberOfProbes": 2
+                        }
+                    }
+                ],
+                "inboundNatRules": [],
+                "inboundNatPools": []
+            }
+        },
+        {
+            "apiVersion": "2019-02-01",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('lbpublicIPAddressName')]",
+            "location": "[parameters('lblocation')]",
+            "sku": {
+                "name": "[parameters('lbsku')]"
+            },
+            "tags": {},
+            "properties": {
+                "publicIPAllocationMethod": "Static",
+                "publicIPAddressVersion": "IPv4",
+                "ipTags": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/loadBalancers/backendAddressPools",
+            "apiVersion": "2020-04-01",
+            "name": "[concat(parameters('lbname'), '/test-vmss-backend')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('lbname'))]"
+            ],
+            "properties": {}
+        }
+    ]
+}
