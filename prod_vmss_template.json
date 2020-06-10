@@ -121,7 +121,6 @@
             "apiVersion": "2019-03-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccount'))]"
             ],
             "sku": {
