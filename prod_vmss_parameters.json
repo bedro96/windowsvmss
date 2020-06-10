@@ -9,7 +9,7 @@
             "value": "koreacentral"
         },
         "virtualNetworkName": {
-            "value": "test-vmss-vnet"
+            "value": "prod-vmss-vnet"
         },
         "subnetName": {
             "value": "default"
