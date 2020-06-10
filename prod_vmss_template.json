@@ -44,12 +44,6 @@
         "osDiskType": {
             "type": "string"
         },
-        "addressPrefixes": {
-            "type": "array"
-        },
-        "subnets": {
-            "type": "array"
-        },
         "networkSecurityGroups": {
             "type": "array"
         },
