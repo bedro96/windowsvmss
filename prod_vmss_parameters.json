@@ -101,7 +101,7 @@
             ]
         },
         "diagnosticStorageAccount": {
-            "value": "testvmssdiag00"
+            "value": "prodvmssdiag00"
         },
         "diagnosticsStorageAccountKind": {
             "value": "Storage"
