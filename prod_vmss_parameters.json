@@ -113,10 +113,10 @@
             "value": "Automatic"
         },
         "adminUsername": {
-            "value": "kunhoko"
+            "value": "vmssadmin"
         },
         "adminPassword": {
-            "value": "CitrixOnAzure1!"
+            "value": "VmssInAzure1!"
         },
         "platformFaultDomainCount": {
             "value": "5"
