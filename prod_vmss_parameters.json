@@ -50,13 +50,30 @@
                         {
                             "name": "Port_80",
                             "properties": {
-                                "protocol": "TCP",
+                                "protocol": "*",
                                 "sourcePortRange": "*",
                                 "destinationPortRange": "80",
                                 "sourceAddressPrefix": "*",
                                 "destinationAddressPrefix": "*",
                                 "access": "Allow",
-                                "priority": 1000,
+                                "priority": 100,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        },
+                        {
+                            "name": "Port_42424",
+                            "properties": {
+                                "protocol": "*",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "42424",
+                                "sourceAddressPrefix": "*",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 103,
                                 "direction": "Inbound",
                                 "sourcePortRanges": [],
                                 "destinationPortRanges": [],
@@ -67,13 +84,81 @@
                         {
                             "name": "Port_443",
                             "properties": {
-                                "protocol": "TCP",
+                                "protocol": "*",
                                 "sourcePortRange": "*",
                                 "destinationPortRange": "443",
                                 "sourceAddressPrefix": "*",
                                 "destinationAddressPrefix": "*",
                                 "access": "Allow",
-                                "priority": 1100,
+                                "priority": 104,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        },
+                        {
+                            "name": "hong_8080",
+                            "properties": {
+                                "protocol": "*",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "8080",
+                                "sourceAddressPrefix": "58.127.223.187/32",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 116,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        },
+                        {
+                            "name": "hong_rdp_2",
+                            "properties": {
+                                "protocol": "*",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "443",
+                                "sourceAddressPrefix": "124.111.235.87/32",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 126,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        },
+                        {
+                            "name": "rdp_it_han",
+                            "properties": {
+                                "protocol": "*",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "8080",
+                                "sourceAddressPrefix": "165.243.40.135/32",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 136,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        },
+                        {
+                            "name": "bean_rdp",
+                            "properties": {
+                                "protocol": "*",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "*",
+                                "sourceAddressPrefix": "61.72.99.211/32",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 146,
                                 "direction": "Inbound",
                                 "sourcePortRanges": [],
                                 "destinationPortRanges": [],
