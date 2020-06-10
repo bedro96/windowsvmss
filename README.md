@@ -1,4 +1,4 @@
-# windows vmss with custom script
+## windows vmss with custom script
 Windows Server 2016 vmss created from ARM Template. To deploy,
 1. Create a resource group
 
