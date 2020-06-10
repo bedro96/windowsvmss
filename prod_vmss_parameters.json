@@ -1,0 +1,128 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachineScaleSetRG": {
+            "value": "prod-vmss-rg"
+        },
+        "location": {
+            "value": "koreacentral"
+        },
+        "virtualNetworkName": {
+            "value": "test-vmss-vnet"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "customImageId": {
+            "value": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/customimagerg/providers/Microsoft.Compute/images/baseimage00-image-20200609200139"
+        },
+        "virtualMachineScaleSetName": {
+            "value": "prod-vmss"
+        },
+        "singlePlacementGroup": {
+            "value": "true"
+        },
+        "instanceSize": {
+            "value": "Standard_D8s_v3"
+        },
+        "instanceCount": {
+            "value": "2"
+        },
+        "upgradeMode": {
+            "value": "Manual"
+        },
+        "priority": {
+            "value": "Regular"
+        },
+        "enableAcceleratedNetworking": {
+            "value": "false"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "networkSecurityGroups": {
+            "value": [
+                {
+                    "name": "prod-vmss-nsg",
+                    "id": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/prod-vmss-rg/providers/Microsoft.Network/networkSecurityGroups/prod-vmss-nsg",
+                    "rules": [
+                        {
+                            "name": "Port_80",
+                            "properties": {
+                                "protocol": "TCP",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "80",
+                                "sourceAddressPrefix": "*",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 1000,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        },
+                        {
+                            "name": "Port_443",
+                            "properties": {
+                                "protocol": "TCP",
+                                "sourcePortRange": "*",
+                                "destinationPortRange": "443",
+                                "sourceAddressPrefix": "*",
+                                "destinationAddressPrefix": "*",
+                                "access": "Allow",
+                                "priority": 1100,
+                                "direction": "Inbound",
+                                "sourcePortRanges": [],
+                                "destinationPortRanges": [],
+                                "sourceAddressPrefixes": [],
+                                "destinationAddressPrefixes": []
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "networkInterfaceConfigurations": {
+            "value": [
+                {
+                    "name": "prod-vmss-vnet-nic01",
+                    "primary": true,
+                    "applicationGatewayBackendAddressPools": [],
+                    "loadBalancerBackendAddressPools": [],
+                    "applicationSecurityGroups": [],
+                    "enableAcceleratedNetworking": false,
+                    "nsgName": "prod-vmss-nsg",
+                    "nsgId": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/prod-vmss-rg/providers/Microsoft.Network/networkSecurityGroups/prod-vmss-nsg",
+                    "pipName": ""
+                }
+            ]
+        },
+        "diagnosticStorageAccount": {
+            "value": "testvmssdiag00"
+        },
+        "diagnosticsStorageAccountKind": {
+            "value": "Storage"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "upgradePolicy": {
+            "value": "Automatic"
+        },
+        "adminUsername": {
+            "value": "kunhoko"
+        },
+        "adminPassword": {
+            "value": "CitrixOnAzure1!"
+        },
+        "platformFaultDomainCount": {
+            "value": "5"
+        },
+        "_artifactsLocation": {
+            "value": "https://artifactslocation00.blob.core.windows.net/scripts"
+        }
+    }
+}
