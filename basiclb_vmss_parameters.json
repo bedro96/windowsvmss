@@ -122,7 +122,11 @@
                     "primary": true,
                     "subnetId": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/virtualNetworks/test-vmss-vnet/subnets/default",
                     "applicationGatewayBackendAddressPools": [],
-                    "loadBalancerBackendAddressPools": ["/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/loadBalancers/backendAddressPools/test-vmss-lb/test-vmss-backend"],
+                    "loadBalancerBackendAddressPools": [
+                        { 
+                            "id": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/loadBalancers/backendAddressPools/test-vmss-lb/test-vmss-backend"
+                        }
+                    ],
                     "applicationSecurityGroups": [],
                     "enableAcceleratedNetworking": false,
                     "nsgName": "test-vmss-nsg",

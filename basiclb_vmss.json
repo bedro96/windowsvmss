@@ -151,8 +151,7 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
-                "networkSecurityGroups",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+                "[concat('Microsoft.Network/loadBalancers/', parameters('lbname'))]",
                 "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticStorageAccount'))]"
             ],
             "sku": {
