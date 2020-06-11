@@ -9,7 +9,7 @@
 
 ## 개발계 배포방법
 
-개발계 배포를 위해서는 test_basiclb_vmss_template.json, test_basiclb_vmss_parameters.json을 준비합니다. 개발계에서는 Public Load Balancer와 VMSS을 함께 배포해서 실 환경과 유사한 환경을 제공합니다. 배포에 필요한 정보는 test_basiclb_vmss_parameters.json을 수정하고, 배포하시면 됩니다. 
+개발계 배포를 위해서는 test_basiclb_vmss_template.json, test_basiclb_vmss_parameters.json을 준비합니다. 개발계에서는 Public Load Balancer와 VMSS을 함께 배포해서 실 환경과 유사한 환경을 제공합니다. 배포에 필요한 정보는 test_basiclb_vmss_parameters.json을 수정하고 배포하시면 됩니다. 
 
 1.	test-vmss-rg라는 리소스 그룹을 생성을 합니다. 
 
