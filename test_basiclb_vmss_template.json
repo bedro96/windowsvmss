@@ -3,59 +3,81 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lbname": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "test-vmss-lb"
         },
         "lblocation": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "koreacentral"
         },
         "lbsku": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Basic"
         },
         "lbpublicIPAddressName": {
-            "type": "string"
-        },
-        "publicIPAddresses_test_vmss_lb_pip_externalid": {
-            "defaultValue": "/subscriptions/05be085b-86ea-4336-addc-38fd56051a9e/resourceGroups/test-vmss-rg/providers/Microsoft.Network/publicIPAddresses/test-vmss-lb-pip",
-            "type": "string"
+            "type": "string",
+            "defaultValue": "test-vmss-lb-pip"
         },
         "location": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "koreacentral"
         },
         "virtualMachineScaleSetName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "test-vmss"
         },
         "virtualMachineScaleSetRG": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "test-vmss-rg"
         },
         "singlePlacementGroup": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "true"
         },
         "instanceSize": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Standard_D8s_v3"
         },
         "instanceCount": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "2"
         },
         "upgradeMode": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Manual"
         },
         "priority": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Regular"
         },
         "enableAcceleratedNetworking": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "false"
         },
         "osDiskType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Premium_LRS"
         },
         "addressPrefixes": {
-            "type": "array"
+            "type": "array",
+            "defaultValue": [
+                "10.3.0.0/16"
+            ]
         },
         "subnets": {
-            "type": "array"
+            "type": "array",
+            "defaultValue": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.3.0.0/24"
+                    }
+                }
+            ]
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "test-vmss-vnet"
         },
         "networkSecurityGroups": {
             "type": "array"
@@ -64,16 +86,20 @@
             "type": "array"
         },
         "diagnosticStorageAccount": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "testvmssdiag01"
         },
         "diagnosticsStorageAccountKind": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Storage"
         },
         "diagnosticsStorageAccountType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Standard_LRS"
         },
         "upgradePolicy": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Automatic"
         },
         "adminUsername": {
             "type": "string"
@@ -82,7 +108,8 @@
             "type": "secureString"
         },
         "platformFaultDomainCount": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "5"
         },
         "_artifactsLocation": {
             "defaultValue": "https://artifactslocation00.blob.core.windows.net/scripts",
